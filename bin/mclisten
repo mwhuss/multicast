@@ -1,0 +1,70 @@
+#! /usr/bin/ruby
+
+require File.dirname(__FILE__) + '/../lib/multicast'
+require 'choice'
+
+
+
+
+Choice.options do
+  header ''
+  header 'Specific options:'
+
+  option :group, :required => true do
+    short '-g'
+    long '--group=GROUP'
+    desc 'The multicast group to listen to (default 224.0.1.33)'
+    default '224.0.1.33'
+  end
+
+  option :port, :required => true do
+    short '-p'
+    long '--port=PORT'
+    desc 'The port to listen on (default 4567)'
+    cast Integer
+    default 4567
+  end
+
+  separator ''
+  separator 'Common options: '
+
+  option :help do
+    long '--help'
+    desc 'Show this message'
+  end
+
+  option :version do
+    short '-v'
+    long '--version'
+    desc 'Show version'
+    action do
+      puts "ftpd.rb FTP server v#{PROGRAM_VERSION}"
+      exit
+    end
+  end
+end
+
+
+puts "==== Multicast Listener ====\n"
+
+multicast_group = Choice.choices[:group]
+port = Choice.choices[:port]
+ip =  IPAddr.new(multicast_group).hton + IPAddr.new("0.0.0.0").hton
+puts "---> Joining #{multicast_group}:#{port}"
+sock = UDPSocket.new
+sock.setsockopt(Socket::IPPROTO_IP, Socket::IP_ADD_MEMBERSHIP, ip)
+sock.bind(Socket::INADDR_ANY, port)
+
+loop do
+  begin
+  msg, info = sock.recvfrom(1024)
+  #puts "MSG: #{msg} from #{info[2]} (#{info[3]})/#{info[1]} len #{msg.size}"
+  puts "---> [#{info[2]} / #{info[3]}:#{info[1]} (#{msg.size} bytes)] #{msg}"
+  
+  rescue Interrupt
+    sock.close
+    puts "\n---> Exiting" 
+    exit
+  end
+
+end

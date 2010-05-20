@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{multicast}
-  s.version = "0.0.0"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marshall Huss"]
@@ -25,7 +25,9 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "bin/mclisten",
      "lib/multicast.rb",
+     "multicast.gemspec",
      "test/helper.rb",
      "test/test_multicast.rb"
   ]

@@ -1,6 +1,10 @@
 = multicast
 
-Description goes here.
+Ruby library and command line utils for multicasting
+
+Just started this guy currently only has a listening script.
+
+	mclisten -g 224.0.1.33 -p 4567
 
 == Note on Patches/Pull Requests
  

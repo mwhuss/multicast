@@ -4,6 +4,10 @@ Ruby library and command line utils for multicasting
 
 This project is very young so some things might not work.
 
+== Install
+
+  gem install multicast
+
 == Listening
 
   mclisten -g 224.0.1.33 -p 4567

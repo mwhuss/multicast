@@ -9,11 +9,10 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marshall Huss"]
-  s.date = %q{2010-05-19}
-  s.default_executable = %q{mclisten}
+  s.date = %q{2010-05-20}
   s.description = %q{Multicasting in Ruby}
   s.email = %q{mwhuss@gmail.com}
-  s.executables = ["mclisten"]
+  s.executables = ["mclisten", "mcsend"]
   s.extra_rdoc_files = [
     "LICENSE",
      "README.rdoc"
@@ -27,6 +26,7 @@ Gem::Specification.new do |s|
      "VERSION",
      "bin/mclisten",
      "lib/multicast.rb",
+     "lib/multicast/listener.rb",
      "multicast.gemspec",
      "test/helper.rb",
      "test/test_multicast.rb"

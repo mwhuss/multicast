@@ -1,0 +1,55 @@
+#! /usr/bin/ruby
+
+require File.dirname(__FILE__) + '/../lib/multicast'
+require 'choice'
+
+
+Choice.options do
+  header ''
+  header 'Specific options:'
+
+  option :group, :required => true do
+    short '-g'
+    long '--group=GROUP'
+    desc 'The multicast group to send to'
+  end
+
+  option :port, :required => true do
+    short '-p'
+    long '--port=PORT'
+    desc 'The port to send on'
+    cast Integer
+  end
+  
+  option :message do
+    short '-m'
+    long '--message=MESSAGE'
+    desc 'The message to send to the multicast group'
+    default "Multicast Message from Ruby Multicast lib"
+  end
+
+  separator ''
+  separator 'Common options: '
+
+  option :help do
+    long '--help'
+    desc 'Show this message'
+  end
+
+  option :version do
+    short '-v'
+    long '--version'
+    desc 'Show version'
+    action do
+      puts "ftpd.rb FTP server v#{PROGRAM_VERSION}"
+      exit
+    end
+  end
+end
+
+puts "==== Multicast Sender ====\n"
+sender = Multicast::Sender.new(:group => Choice.choices[:group], :port => Choice.choices[:port])
+puts "---> Sending message to #{Choice.choices[:group]}:#{Choice.choices[:port]}"
+puts "---> #{Choice.choices[:message]}"
+
+sender.send(Choice.choices[:message])

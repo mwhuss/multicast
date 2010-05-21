@@ -25,8 +25,10 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "bin/mclisten",
+     "bin/mcsend",
      "lib/multicast.rb",
      "lib/multicast/listener.rb",
+     "lib/multicast/sender.rb",
      "multicast.gemspec",
      "test/helper.rb",
      "test/test_multicast.rb"

@@ -3,6 +3,7 @@
 require File.dirname(__FILE__) + '/../lib/multicast'
 require 'choice'
 
+PROGRAM_VERSION = File.exist?('VERSION') ? File.read('VERSION') : ""
 
 Choice.options do
   header ''
@@ -41,7 +42,7 @@ Choice.options do
     long '--version'
     desc 'Show version'
     action do
-      puts "ftpd.rb FTP server v#{PROGRAM_VERSION}"
+      puts "mcsend v#{PROGRAM_VERSION}"
       exit
     end
   end

@@ -2,19 +2,19 @@
 
 Ruby library and command line utils for multicasting
 
-Just started this guy currently only has a listening script.
+This project is very young so some things might not work.
 
-	mclisten -g 224.0.1.33 -p 4567
+== Listening
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+  mclisten -g 224.0.1.33 -p 4567
+
+== Sending
+
+  mcsend -g 224.0.1.33 -p 4567 -m "Multicasting like a champ"
+
+== Contact
+
+You can find me on @mwhuss[http://twitter.com/mwhuss]
 
 == Copyright
 

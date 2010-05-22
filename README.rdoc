@@ -10,15 +10,33 @@ This project is very young so some things might not work.
 
 == Listening
 
+=== Command Line
+
   mclisten -g 224.0.1.33 -p 4567
+
+=== Code
+
+  listener = Multicast::Listener.new(:group => Choice.choices[:group], :port => Choice.choices[:port])
+  listener.listen do |message|
+    puts "---> [#{message.hostname} / #{message.ip}:#{message.port} (#{message.message.size} bytes)] #{message.message}"
+  end
 
 == Sending
 
+=== Command Line
+
   mcsend -g 224.0.1.33 -p 4567 -m "Multicasting like a champ"
+
+=== Code
+
+  sender = Multicast::Sender.new(:group => Choice.choices[:group], :port => Choice.choices[:port])
+  sender.send("Multicasting like a champ")
 
 == Contact
 
-You can find me on @mwhuss[http://twitter.com/mwhuss]
+Twtter[http://twitter.com/mwhuss]
+Blog[http://mwhuss.com]
+TwoGuys[http://weretwoguys.com]
 
 == Copyright
 

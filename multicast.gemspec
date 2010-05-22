@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marshall Huss"]
-  s.date = %q{2010-05-20}
+  s.date = %q{2010-05-21}
   s.description = %q{Multicasting in Ruby}
   s.email = %q{mwhuss@gmail.com}
   s.executables = ["mclisten", "mcsend"]
@@ -28,6 +28,7 @@ Gem::Specification.new do |s|
      "bin/mcsend",
      "lib/multicast.rb",
      "lib/multicast/listener.rb",
+     "lib/multicast/message.rb",
      "lib/multicast/sender.rb",
      "multicast.gemspec",
      "test/helper.rb",

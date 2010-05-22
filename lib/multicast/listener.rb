@@ -16,10 +16,9 @@ module Multicast
       
       loop do
         begin
-        msg, info = sock.recvfrom(1024)
-        #puts "MSG: #{msg} from #{info[2]} (#{info[3]})/#{info[1]} len #{msg.size}"
-        #puts "---> [#{info[2]} / #{info[3]}:#{info[1]} (#{msg.size} bytes)] #{msg}"
-        yield(msg, info)
+          msg, info = sock.recvfrom(1024)
+          message = Message.new(:message => msg, :hostname => info[2], :ip => info[3], :port => info[1])
+          yield(message)
 
         rescue Interrupt
           sock.close

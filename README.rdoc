@@ -16,7 +16,7 @@ This project is very young so some things might not work.
 
 === Code
 
-  listener = Multicast::Listener.new(:group => Choice.choices[:group], :port => Choice.choices[:port])
+  listener = Multicast::Listener.new(:group => "224.0.1.33", :port => 4567)
   listener.listen do |message|
     puts "---> [#{message.hostname} / #{message.ip}:#{message.port} (#{message.message.size} bytes)] #{message.message}"
   end
@@ -29,7 +29,7 @@ This project is very young so some things might not work.
 
 === Code
 
-  sender = Multicast::Sender.new(:group => Choice.choices[:group], :port => Choice.choices[:port])
+  sender = Multicast::Sender.new(:group => "224.0.1.33", :port => 4567)
   sender.send("Multicasting like a champ")
 
 == Contact
